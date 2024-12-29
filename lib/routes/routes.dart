@@ -8,12 +8,6 @@ import 'package:managely/pages/summary/view/summary_page.dart';
 import 'package:managely/pages/task/view/task_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
-final _homeShellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'home_shell');
-final _taskShellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'task_shell');
-final _summaryShellNavigatorKey =
-    GlobalKey<NavigatorState>(debugLabel: 'summary_shell');
 
 class RouterFactory {
   static GoRouter generateRoute() {
@@ -26,7 +20,8 @@ class RouterFactory {
                   ),
               branches: [
                 StatefulShellBranch(
-                    navigatorKey: _homeShellNavigatorKey,
+                    navigatorKey:
+                        GlobalKey<NavigatorState>(debugLabel: 'home_shell'),
                     routes: [
                       GoRoute(
                         path: '/home',
@@ -34,15 +29,21 @@ class RouterFactory {
                       ),
                     ]),
                 StatefulShellBranch(
-                    navigatorKey: _taskShellNavigatorKey,
+                    navigatorKey:
+                        GlobalKey<NavigatorState>(debugLabel: 'task_shell'),
                     routes: [
                       GoRoute(
-                        path: '/task',
-                        builder: (context, state) => TaskPage(),
-                      ),
+                          path: '/task',
+                          builder: (context, state) {
+                            final filterId = state.extra.toString();
+                            return TaskPage(
+                              filterId: filterId,
+                            );
+                          }),
                     ]),
                 StatefulShellBranch(
-                    navigatorKey: _summaryShellNavigatorKey,
+                    navigatorKey:
+                        GlobalKey<NavigatorState>(debugLabel: 'summary_shell'),
                     routes: [
                       GoRoute(
                           path: '/summary',
