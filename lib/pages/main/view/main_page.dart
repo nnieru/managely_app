@@ -12,7 +12,7 @@ class MainPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> items = [HomaPage(), TaskPage(), SummaryPage()];
+    List<Widget> items = [HomePage(), TaskPage(), SummaryPage()];
 
     return Scaffold(
       body: navigationShell,

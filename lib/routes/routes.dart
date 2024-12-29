@@ -25,7 +25,7 @@ class RouterFactory {
                     routes: [
                       GoRoute(
                         path: '/home',
-                        builder: (context, state) => HomaPage(),
+                        builder: (context, state) => HomePage(),
                       ),
                     ]),
                 StatefulShellBranch(
@@ -39,7 +39,18 @@ class RouterFactory {
                             return TaskPage(
                               filterId: filterId,
                             );
-                          }),
+                          },
+                          routes: [
+                            GoRoute(
+                                parentNavigatorKey: _rootNavigatorKey,
+                                path: 'create',
+                                pageBuilder: (context, state) => MaterialPage(
+                                      child: Scaffold(
+                                        body:
+                                            Center(child: Text('create page')),
+                                      ),
+                                    ))
+                          ]),
                     ]),
                 StatefulShellBranch(
                     navigatorKey:

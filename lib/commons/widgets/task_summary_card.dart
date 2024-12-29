@@ -53,7 +53,7 @@ class TaskSummaryCard extends StatelessWidget {
                 ],
               ),
               const Icon(
-                Icons.arrow_right_rounded,
+                Icons.arrow_forward_ios_rounded,
               )
             ],
           ),
