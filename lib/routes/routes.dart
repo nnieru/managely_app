@@ -5,6 +5,7 @@ import 'package:managely/pages/main/view/main_page.dart';
 import 'package:managely/pages/profile/view/profile_page.dart';
 import 'package:managely/pages/summary/view/second_summ_page.dart';
 import 'package:managely/pages/summary/view/summary_page.dart';
+import 'package:managely/pages/task/view/add_task_page.dart';
 import 'package:managely/pages/task/view/task_page.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -44,12 +45,7 @@ class RouterFactory {
                             GoRoute(
                                 parentNavigatorKey: _rootNavigatorKey,
                                 path: 'create',
-                                pageBuilder: (context, state) => MaterialPage(
-                                      child: Scaffold(
-                                        body:
-                                            Center(child: Text('create page')),
-                                      ),
-                                    ))
+                                builder: (context, state) => AddTaskPage())
                           ]),
                     ]),
                 StatefulShellBranch(
